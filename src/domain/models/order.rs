@@ -27,7 +27,7 @@ pub struct Order {
     status: Status,
     description: String,
     payment: f32,
-    user: Id,
+    user: Option<Id>,
     creation_date: Option<DateTime<Local>>,
     end_date: Option<DateTime<Local>>,
     availability_date: Option<DateTime<Local>>,
