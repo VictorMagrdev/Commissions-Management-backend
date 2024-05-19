@@ -5,6 +5,16 @@ use crate::domain::models::order::Order;
 use crate::infrastructure::data::repositories::order_repository::OrderRepository;
 use crate::infrastructure::data::repositories::tables::tables_name::ORDER;
 
+/// ##Descripción
+/// Función encargada de la creación de un encargo en el repositorio.
+///
+/// ## Precondición
+/// -El JSON debe ser valido, es decir, debe representar correctamente a un Encargo.
+/// -Debe existir una instancia de OrderRepository
+///
+/// ## Poscondición
+/// -Un JSON indicando la correcta creación de un encargo el cual ahora se encuentra en el repositorio.
+
 pub async fn create_order_command(Json(body): Json<Order>)
                                      -> Result<impl IntoResponse, (StatusCode, Json<Value>)> {
     let repository: OrderRepository = OrderRepository::new(ORDER);

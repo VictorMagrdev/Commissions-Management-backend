@@ -10,6 +10,16 @@ pub enum AuthError {
     MissingCredentials,
 }
 
+/// ## Descripción
+/// Implementación del trait `IntoResponse` para la estructura `AuthError`, que convierte un `AuthError` en una respuesta HTTP.
+
+/// ## Precondición
+/// - Se proporciona una instancia válida de `AuthError`.
+
+/// ## Poscondición
+/// - Se devuelve una respuesta HTTP que corresponde al tipo de error en `AuthError`.
+
+
 impl IntoResponse for AuthError {
     fn into_response(self) -> Response {
         let (status, error_message) = match self {

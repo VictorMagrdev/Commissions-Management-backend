@@ -12,10 +12,30 @@ struct AuthPayload {
     client_id: String,
     client_secret: String,
 }
+
+/// ## Descripción
+/// Función asincrónica para manejar el acceso a áreas protegidas, utilizando las reclamaciones proporcionadas.
+///
+/// ## Precondición
+/// - Se proporcionan reclamaciones válidas del usuario.
+///
+/// ## Poscondición
+/// - Se devuelve un mensaje de bienvenida personalizado que incluye el nombre de usuario extraído de las reclamaciones.
+
 async fn protected(claims: Claims) -> String {
     // Send the protected data to the user
     format!("Welcome to the protected area, {}!", claims.username)
 }
+
+/// ## Descripción
+/// Función asincrónica para autorizar a un usuario mediante un proceso de autenticación basado en credenciales.
+///
+/// ## Precondición
+/// - Se proporciona un objeto JSON `AuthPayload` válido que contiene las credenciales del cliente.
+///
+/// ## Poscondición
+/// - Si la autenticación es exitosa, se genera un token de acceso válido y se devuelve en un cuerpo de autenticación JSON.
+/// - Si la autenticación falla debido a credenciales faltantes o incorrectas, se devuelve un error `AuthError` apropiado.
 
 async fn authorize(Json(payload): Json<AuthPayload>) -> Result<Json<AuthBody>, AuthError> {
     // Check if the user sent the credentials

@@ -10,6 +10,14 @@ use crate::application::queries::get_all_providers_query::get_all_providers_quer
 
 use super::health_checker_handler;
 
+/// ## Descripción
+/// Configura y devuelve un objeto tipo Router con las rutas. Emplea health_checker_handler
+/// para realizar la verificación de estado.
+///
+/// ## Poscondición
+/// Se crea un enrutador con ruta definida para la verificación de estado. Ademas,
+/// debe dar un respuesta JSON confirmando el buen funcionamiento de la API.
+///
 pub fn create_router() -> Router {
     Router::new()
         .route(

@@ -7,6 +7,18 @@ use serde_json::Value;
 
 use crate::infrastructure::data::repositories::repository::Repository;
 
+/// ## Descripción
+/// Función encargada de eliminar un registro del repositorio dado un ID y el nombre de la tabla.
+///
+/// ## Precondición
+/// - Debe proporcionarse un ID válido del registro a eliminar.
+/// - Debe existir una instancia de Repository configurada con el nombre de la tabla correspondiente.
+///
+/// ## Poscondición
+/// - Si el registro con el ID proporcionado existe, se eliminará del repositorio.
+/// - Si el registro no existe, se devolverá un mensaje de error indicando que no se encontró el registro.
+
+
 pub async fn delete_command<T:for<'a>Deserialize<'a>+ Serialize>(Path(id): Path<String>, table: &str)
                             -> Result<impl IntoResponse, (StatusCode, Json<Value>)> {
 

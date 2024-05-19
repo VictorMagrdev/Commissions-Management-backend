@@ -2,6 +2,10 @@ use chrono::{DateTime, Local};
 use serde::{Deserialize, Serialize};
 use surrealdb::sql::{Id, Thing};
 
+/// ##Descripción
+/// Representación de los que se podran realizar por parte de los usuarios,
+/// la información representa una necesidad de quien la creó.
+
 #[derive(Debug, Deserialize, Serialize, Clone)]
 pub enum Category {
     Remote,
