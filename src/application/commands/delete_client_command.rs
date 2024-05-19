@@ -18,7 +18,7 @@ use crate::infrastructure::data::repositories::tables::tables_name::CLIENT;
 /// -El cliente eliminado del repositorio.
 
 pub async fn delete_client_command( Path(id): Path<String>)
-                                  -> Result<impl IntoResponse, (StatusCode, Json<Value>)> {
+                                -> Result<impl IntoResponse, (StatusCode, Json<Value>)> {
 
     delete_command::<Client>(Path(id), &*CLIENT).await
 }

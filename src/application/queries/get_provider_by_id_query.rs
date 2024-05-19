@@ -25,7 +25,7 @@ pub async fn get_provider_by_id_query(Path(id): Path<String>)
     let repository:ProviderRepository = ProviderRepository::new(PROVIDER);
     let id:String = id.to_string();
 
-    let todo: Result<Provider, Error> = repository.get_by_id(id).await;
+    let provider: Result<Provider, Error> = repository.get_by_id(id).await;
 
-    return Ok((StatusCode::OK, Json(todo)));
+    return Ok((StatusCode::OK, Json(provider)));
 }

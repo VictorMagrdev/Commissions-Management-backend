@@ -13,4 +13,13 @@ pub struct User {
     email: String,
 }
 
+impl User {
+    pub fn get_password(&self) -> &str {
+        &self.password
+    }
+    pub fn get_email(&self) -> &str {
+        &self.email
+    }
+}
+
 

@@ -15,7 +15,7 @@ use crate::infrastructure::data::repositories::tables::tables_name::PROVIDER;
 /// ## Poscondición
 /// -Un JSON indicando la correcta creación de un proveedor el cual ahora se encuentra en el repositorio.
 pub async fn create_provider_command(Json(body): Json<Provider>)
-                                   -> Result<impl IntoResponse, (StatusCode, Json<Value>)> {
+                                -> Result<impl IntoResponse, (StatusCode, Json<Value>)> {
     let repository: ProviderRepository = ProviderRepository::new(PROVIDER);
 
     let provider:Provider = body.to_owned();

@@ -12,3 +12,15 @@ pub struct Provider {
     user: User,
     rating: f32,
 }
+impl Provider {
+    pub fn get_email(&self) -> &str {
+        &self.user.get_email()
+    }
+    pub fn get_password(&self) -> &str {
+        &self.user.get_password()
+    }
+
+    pub fn get_id(&self) -> Option<&Thing> {
+        self.id.as_ref()
+    }
+}

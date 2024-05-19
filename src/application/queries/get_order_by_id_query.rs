@@ -25,7 +25,7 @@ pub async fn get_order_by_id_query(Path(id): Path<String>)
     let repository:OrderRepository = OrderRepository::new(ORDER);
     let id:String = id.to_string();
 
-    let todo: Result<Order, Error> = repository.get_by_id(id).await;
+    let order: Result<Order, Error> = repository.get_by_id(id).await;
 
-    return Ok((StatusCode::OK, Json(todo)));
+    return Ok((StatusCode::OK, Json(order)));
 }

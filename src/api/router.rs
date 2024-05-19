@@ -7,7 +7,7 @@ use crate::application::commands::create_provider_command::create_provider_comma
 use crate::application::queries::get_all_clients_query::get_all_clients_query;
 use crate::application::queries::get_all_orders_query::get_all_orders_query;
 use crate::application::queries::get_all_providers_query::get_all_providers_query;
-
+use crate::infrastructure::security::jwt::auth_payload::{authorize, protected};
 use super::health_checker_handler;
 
 /// ## Descripción
@@ -34,7 +34,9 @@ pub fn create_router() -> Router {
                 .post(create_order_command)
         )
         .route("/api/providers",
-               get(get_all_providers_query)
-                   .post(create_provider_command)
+            get(get_all_providers_query)
+                    .post(create_provider_command)
         )
+        .route("/protected", get(protected))
+        .route("/login", post(authorize))
 }

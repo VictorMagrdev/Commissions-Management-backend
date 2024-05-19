@@ -102,4 +102,17 @@ impl<T: for<'a> Deserialize<'a>  + Serialize> Repository<T> {
         let result: T = DB.delete((&self.table, id.to_string())).await?.unwrap();
         Ok(result)
     }
+    pub async fn get_by_mail(&self, email: String) -> Result<T, Error> {
+        let query = format!("SELECT * FROM {} WHERE user.email = $email", self.table);
+        let mut response = DB.query(query)
+            .bind(("email", email.clone()))
+            .await?;
+
+        if let Some(record) = response.take(0)? {
+            return Ok(record);
+        }
+
+        let error = Error::Db(Thrown(format!("{} with email {} not found", self.table, email)));
+        Err(error)
+    }
 }

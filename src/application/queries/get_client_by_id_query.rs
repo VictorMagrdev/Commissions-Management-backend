@@ -25,7 +25,7 @@ pub async fn get_client_by_id_query(Path(id): Path<String>)
     let repository:ClientRepository = ClientRepository::new(CLIENT);
     let id:String = id.to_string();
 
-    let todo: Result<Client, Error> = repository.get_by_id(id).await;
+    let client: Result<Client, Error> = repository.get_by_id(id).await;
 
-    return Ok((StatusCode::OK, Json(todo)));
+    return Ok((StatusCode::OK, Json(client)));
 }

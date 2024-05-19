@@ -10,6 +10,7 @@ use crate::KEYS;
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Claims {
     pub username: String,
+    pub id: String,
     pub exp: usize,
 }
 

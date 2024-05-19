@@ -12,3 +12,16 @@ pub struct Client {
     id: Option<Thing>,
     user: User
 }
+
+impl Client {
+    pub fn get_email(&self) -> &str {
+        &self.user.get_email()
+    }
+    pub fn get_password(&self) -> &str {
+        &self.user.get_password()
+    }
+
+    pub fn get_id(&self) -> Option<&Thing> {
+        self.id.as_ref()
+    }
+}

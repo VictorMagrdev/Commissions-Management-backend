@@ -8,6 +8,6 @@ pub mod infrastructure;
 pub mod application;
 
 pub static KEYS: Lazy<Keys> = Lazy::new(|| {
-    let secret = Alphanumeric.sample_string(&mut rand::thread_rng(), 60);
+    let secret: String = Alphanumeric.sample_string(&mut rand::thread_rng(), 60);
     Keys::new(secret.as_bytes())
 });
